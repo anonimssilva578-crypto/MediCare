@@ -1,0 +1,78 @@
+{% extends "paciente/paciente_base.html" %}
+
+{% block title %}
+Diagnósticos | MediCare
+{% endblock %}
+
+{% block content %}
+
+<section class="paciente-page">
+
+    <div class="paciente-page-header">
+
+        <span class="paciente-section-label">
+            INFORMACIÓN CLÍNICA
+        </span>
+
+        <h1>Mis diagnósticos</h1>
+
+        <p>
+            Consulta los diagnósticos registrados en tu historia clínica.
+        </p>
+
+    </div>
+
+
+    <div class="paciente-detail-card">
+
+        <h2>Diagnósticos registrados</h2>
+
+        {% if diagnosticos %}
+
+            {% for diagnostico in diagnosticos %}
+
+            <div class="paciente-record">
+
+                <div class="paciente-record-header">
+
+                    <strong>
+                        {{ diagnostico.diagnostico }}
+                    </strong>
+
+                    <span>
+                        {{ diagnostico.fecha }}
+                    </span>
+
+                </div>
+
+                {% if diagnostico.observaciones %}
+
+                <p>
+                    {{ diagnostico.observaciones }}
+                </p>
+
+                {% endif %}
+
+            </div>
+
+            {% endfor %}
+
+        {% else %}
+
+            <div class="paciente-empty">
+
+                <strong>No tienes diagnósticos registrados.</strong>
+
+                <p>
+                    Actualmente no hay diagnósticos disponibles.
+                </p>
+
+            </div>
+
+        {% endif %}
+
+    </div>
+
+</section>
+
+{% endblock %}

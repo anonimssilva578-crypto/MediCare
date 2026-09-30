@@ -1,0 +1,111 @@
+<!DOCTYPE html>
+<html lang="es">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+    <title>{% block title %}MediCare{% endblock %}</title>
+
+    <link rel="icon"
+          href="{{ url_for('static', filename='img/favicon.png') }}">
+
+    <link rel="stylesheet"
+          href="{{ url_for('static', filename='css/paciente.css') }}">
+</head>
+
+<body>
+
+    <header class="paciente-navbar">
+
+        <div class="paciente-navbar-container">
+
+            <a href="{{ url_for('paciente_dashboard') }}"
+               class="paciente-brand">
+
+                <img
+                    src="{{ url_for('static', filename='img/logo.png') }}"
+                    alt="MediCare"
+                >
+
+            </a>
+
+            <nav class="paciente-nav-links">
+
+                <a href="{{ url_for('paciente_dashboard') }}">
+                    Inicio
+                </a>
+
+                <a href="{{ url_for('paciente_historia') }}">
+                    Historia clínica
+                </a>
+
+                <a href="{{ url_for('diagnosticos_paciente') }}">
+                    Diagnósticos
+                </a>
+
+                <a href="{{ url_for('ordenes_paciente') }}">
+                    Órdenes
+                </a>
+
+            </nav>
+
+            <div class="paciente-user">
+
+                <span>{{ nombre }}</span>
+
+                <a href="{{ url_for('logout') }}"
+                   class="paciente-logout">
+                    Cerrar sesión
+                </a>
+
+            </div>
+
+        </div>
+
+    </header>
+
+
+    <main>
+
+        {% with messages = get_flashed_messages(with_categories=true) %}
+
+            {% if messages %}
+
+                <div class="paciente-messages">
+
+                    {% for categoria, mensaje in messages %}
+
+                        <div class="paciente-message {{ categoria }}">
+                            {{ mensaje }}
+                        </div>
+
+                    {% endfor %}
+
+                </div>
+
+            {% endif %}
+
+        {% endwith %}
+
+        {% block content %}
+        {% endblock %}
+
+    </main>
+
+
+    <footer class="paciente-footer">
+
+        <p>
+            © 2026 MediCare — Sistema de Gestión Clínica
+        </p>
+
+        <p>
+            Atención y gestión de información clínica
+        </p>
+
+    </footer>
+
+</body>
+
+</html>

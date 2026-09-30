@@ -1,0 +1,310 @@
+{% extends "paciente/paciente_base.html" %}
+
+{% block title %}
+Panel del Paciente | MediCare
+{% endblock %}
+
+{% block content %}
+
+<section class="paciente-dashboard">
+
+    <!-- =====================================================
+         ENCABEZADO
+    ====================================================== -->
+
+    <div class="paciente-header">
+
+        <span class="paciente-section-label">
+            PANEL DEL PACIENTE
+        </span>
+
+        <h1>
+            Bienvenido, {{ nombre }}
+        </h1>
+
+        <p>
+            Consulta tu información clínica desde un solo lugar.
+        </p>
+
+    </div>
+
+
+    <!-- =====================================================
+         INFORMACIÓN PRINCIPAL
+    ====================================================== -->
+
+    <section class="paciente-stats">
+
+        <!-- PACIENTE -->
+
+        <div class="paciente-stat-card">
+
+            <div class="paciente-stat-icon">
+                👤
+            </div>
+
+            <div>
+
+                <span>Paciente</span>
+
+                <strong>
+                    {{ paciente.nombre }} {{ paciente.apellido }}
+                </strong>
+
+                <small>
+                    Información personal
+                </small>
+
+            </div>
+
+        </div>
+
+
+        <!-- DIAGNÓSTICOS -->
+
+        <div class="paciente-stat-card">
+
+            <div class="paciente-stat-icon">
+                📋
+            </div>
+
+            <div>
+
+                <span>Diagnósticos</span>
+
+                <strong>
+                    {{ diagnosticos|length }}
+                </strong>
+
+                <small>
+                    Registrados
+                </small>
+
+            </div>
+
+        </div>
+
+
+        <!-- ÓRDENES -->
+
+        <div class="paciente-stat-card">
+
+            <div class="paciente-stat-icon">
+                📄
+            </div>
+
+            <div>
+
+                <span>Órdenes</span>
+
+                <strong>
+                    {{ ordenes|length }}
+                </strong>
+
+                <small>
+                    Registradas
+                </small>
+
+            </div>
+
+        </div>
+
+    </section>
+
+
+    <!-- =====================================================
+         ACCESOS RÁPIDOS
+    ====================================================== -->
+
+    <section class="paciente-actions">
+
+        <div class="paciente-section-heading">
+
+            <div>
+
+                <span class="paciente-section-label">
+                    INFORMACIÓN CLÍNICA
+                </span>
+
+                <h2>
+                    Accesos rápidos
+                </h2>
+
+                <p>
+                    Consulta tu información médica de forma rápida.
+                </p>
+
+            </div>
+
+        </div>
+
+
+        <div class="paciente-action-grid">
+
+
+            <!-- HISTORIA -->
+
+            <a
+                href="{{ url_for('paciente_historia') }}"
+                class="paciente-action-card"
+            >
+
+                <div class="paciente-action-icon">
+                    🩺
+                </div>
+
+                <div class="paciente-action-content">
+
+                    <h3>
+                        Historia clínica
+                    </h3>
+
+                    <p>
+                        Consulta tu información clínica y antecedentes.
+                    </p>
+
+                </div>
+
+                <span class="paciente-action-arrow">
+                    →
+                </span>
+
+            </a>
+
+
+            <!-- DIAGNÓSTICOS -->
+
+            <a
+                href="{{ url_for('diagnosticos_paciente') }}"
+                class="paciente-action-card"
+            >
+
+                <div class="paciente-action-icon">
+                    📋
+                </div>
+
+                <div class="paciente-action-content">
+
+                    <h3>
+                        Diagnósticos
+                    </h3>
+
+                    <p>
+                        Consulta tus diagnósticos registrados.
+                    </p>
+
+                </div>
+
+                <span class="paciente-action-arrow">
+                    →
+                </span>
+
+            </a>
+
+
+            <!-- ÓRDENES -->
+
+            <a
+                href="{{ url_for('ordenes_paciente') }}"
+                class="paciente-action-card"
+            >
+
+                <div class="paciente-action-icon">
+                    📄
+                </div>
+
+                <div class="paciente-action-content">
+
+                    <h3>
+                        Órdenes médicas
+                    </h3>
+
+                    <p>
+                        Consulta tus órdenes y su estado.
+                    </p>
+
+                </div>
+
+                <span class="paciente-action-arrow">
+                    →
+                </span>
+
+            </a>
+
+        </div>
+
+    </section>
+
+
+    <!-- =====================================================
+         INFORMACIÓN DEL PACIENTE
+    ====================================================== -->
+
+    <section class="paciente-system-section">
+
+        <span class="paciente-section-label">
+            MI INFORMACIÓN
+        </span>
+
+        <h2>
+            Datos personales
+        </h2>
+
+        <p class="paciente-system-description">
+            Información básica registrada en MediCare.
+        </p>
+
+
+        <div class="paciente-system-card">
+
+            <div class="paciente-system-item">
+
+                <span>
+                    Documento
+                </span>
+
+                <strong>
+                    {{ paciente.documento }}
+                </strong>
+
+            </div>
+
+
+            <div class="paciente-system-divider"></div>
+
+
+            <div class="paciente-system-item">
+
+                <span>
+                    Teléfono
+                </span>
+
+                <strong>
+                    {{ paciente.telefono }}
+                </strong>
+
+            </div>
+
+
+            <div class="paciente-system-divider"></div>
+
+
+            <div class="paciente-system-item">
+
+                <span>
+                    Alergias
+                </span>
+
+                <strong>
+                    {{ paciente.alergias or 'Ninguna' }}
+                </strong>
+
+            </div>
+
+        </div>
+
+    </section>
+
+</section>
+
+{% endblock %}

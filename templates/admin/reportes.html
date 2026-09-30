@@ -1,0 +1,192 @@
+{% extends "admin/admin_base.html" %}
+
+{% block title %}
+Reportes | MediCare
+{% endblock %}
+
+{% block content %}
+
+<section class="admin-reports-page">
+
+    <!-- =====================================================
+         ENCABEZADO
+    ====================================================== -->
+
+    <div class="admin-reports-header">
+
+        <div>
+
+            <span class="admin-label">
+                REPORTES
+            </span>
+
+            <h1>
+                Centro de Reportes
+            </h1>
+
+            <p>
+                Consulta y genera información del sistema
+                clínico de manera rápida y organizada.
+            </p>
+
+        </div>
+
+    </div>
+
+
+    <!-- =====================================================
+         TARJETAS DE REPORTES
+    ====================================================== -->
+
+    <div class="admin-reports-grid">
+
+
+        <!-- PACIENTES -->
+
+        <article class="admin-report-card">
+
+            <div class="admin-report-icon">
+                👥
+            </div>
+
+            <div class="admin-report-content">
+
+                <span>
+                    PACIENTES
+                </span>
+
+                <h2>
+                    Pacientes registrados
+                </h2>
+
+                <p>
+                    Consulta el listado completo de pacientes
+                    registrados en MediCare.
+                </p>
+
+                <button
+                    type="button"
+                    class="admin-report-button"
+                    onclick="mostrarPacientes()"
+                >
+                    Ver pacientes
+                    <span>→</span>
+                </button>
+
+            </div>
+
+        </article>
+
+
+        <!-- HISTORIA CLÍNICA -->
+
+        <article class="admin-report-card">
+
+            <div class="admin-report-icon">
+                🩺
+            </div>
+
+            <div class="admin-report-content">
+
+                <span>
+                    HISTORIA CLÍNICA
+                </span>
+
+                <h2>
+                    Información clínica
+                </h2>
+
+                <p>
+                    Consulta la información clínica,
+                    diagnósticos y órdenes de un paciente.
+                </p>
+
+                <button
+                    type="button"
+                    class="admin-report-button"
+                    onclick="mostrarSelectorHistoria()"
+                >
+                    Consultar historia
+                    <span>→</span>
+                </button>
+
+            </div>
+
+        </article>
+
+
+        <!-- RESUMEN -->
+
+        <article class="admin-report-card">
+
+            <div class="admin-report-icon">
+                📊
+            </div>
+
+            <div class="admin-report-content">
+
+                <span>
+                    RESUMEN
+                </span>
+
+                <h2>
+                    Resumen general
+                </h2>
+
+                <p>
+                    Visualiza las principales estadísticas
+                    registradas en el sistema.
+                </p>
+
+                <button
+                    type="button"
+                    class="admin-report-button"
+                    onclick="mostrarResumen()"
+                >
+                    Ver resumen
+                    <span>→</span>
+                </button>
+
+            </div>
+
+        </article>
+
+    </div>
+
+
+    <!-- =====================================================
+         RESULTADOS
+    ====================================================== -->
+
+    <div
+        id="reporteResultado"
+        class="admin-report-result"
+        style="display: none;"
+    >
+
+    </div>
+
+
+    <!-- =====================================================
+         DATOS PARA ADMIN.JS
+    ====================================================== -->
+
+    <script id="medicare-reportes-data" type="application/json">
+        {{ {
+            "pacientes": pacientes,
+            "resumen": resumen
+        } | tojson }}
+    </script>
+
+
+    <!-- =====================================================
+         CARGAR ADMIN.JS
+    ====================================================== -->
+
+    <script
+        src="{{ url_for('static', filename='js/admin.js') }}"
+    ></script>
+
+</section>
+
+{% endblock %}

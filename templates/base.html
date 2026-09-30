@@ -1,0 +1,135 @@
+<!DOCTYPE html>
+<html lang="es">
+
+<head>
+
+    <meta charset="UTF-8">
+
+    <meta
+        name="viewport"
+        content="width=device-width, initial-scale=1.0"
+    >
+
+    <title>
+        {% block title %}
+        MediCare
+        {% endblock %}
+    </title>
+
+    <link 
+    rel="icon" 
+    type="image/png" 
+    href="{{ url_for('static', filename= 'img/favicon.png')}}">
+
+    <link
+        rel="stylesheet"
+        href="{{ url_for('static', filename='css/style.css') }}"
+    >
+
+    {% block extra_css %}
+    {% endblock %}
+</head>
+
+
+<body>
+
+
+<header class="navbar">
+
+    <!-- =================================================
+         LOGO
+    ================================================== -->
+
+    <a
+        href="{{ url_for('inicio') }}"
+        class="logo"
+    >
+
+        <img
+            src="{{ url_for('static', filename='img/logo.png') }}"
+            alt="Logo de MediCare"
+            class="logo-img"
+        >
+
+    </a>
+
+
+    <!-- =================================================
+         NAVEGACIÓN
+    ================================================== -->
+
+    <nav class="nav-links">
+
+        <a href="{{ url_for('inicio') }}#inicio">
+            Inicio
+        </a>
+
+        <a href="{{ url_for('inicio') }}#servicios">
+            Servicios
+        </a>
+
+        <a href="{{ url_for('inicio') }}#nosotros">
+            Nosotros
+        </a>
+
+        <a href="{{ url_for('inicio') }}#acceso">
+            Acceso
+        </a>
+
+    </nav>
+
+
+    <!-- =================================================
+         LOGIN
+    ================================================== -->
+
+    <a
+        href="{{ url_for('login') }}"
+        class="btn-login"
+    >
+        Iniciar sesión
+    </a>
+
+</header>
+
+
+<!-- =====================================================
+     CONTENIDO PRINCIPAL
+===================================================== -->
+
+<main>
+
+    {% block content %}
+    {% endblock %}
+
+</main>
+
+
+<!-- =====================================================
+     FOOTER
+===================================================== -->
+
+<footer>
+
+    <p>
+        © <span id="current-year">2026</span>
+        MediCare — Sistema de Gestión Clínica
+        <br>
+        Derechos Reservados — Página elaborada por Nexus Corp
+    </p>
+
+</footer>
+
+
+<!-- =====================================================
+     JAVASCRIPT
+===================================================== -->
+
+<script
+    src="{{ url_for('static', filename='js/script.js') }}"
+></script>
+
+
+</body>
+
+</html>

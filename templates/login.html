@@ -1,0 +1,139 @@
+{% extends "auth_base.html" %}
+
+{% block title %}
+Iniciar sesión | MediCare
+{% endblock %}
+
+{% block extra_css %}
+
+<link
+    rel="stylesheet"
+    href="{{ url_for('static', filename='css/login.css') }}"
+>
+
+{% endblock %}
+
+
+{% block content %}
+
+<section class="login-page">
+
+    <div class="login-card">
+
+        <!-- =================================================
+             ENCABEZADO
+        ================================================== -->
+
+        <div class="login-header">
+
+            <span>
+                MEDICARE
+            </span>
+
+            <h1>
+                Iniciar sesión
+            </h1>
+
+            <p>
+                Accede al sistema utilizando
+                tus credenciales.
+            </p>
+
+        </div>
+
+
+        <!-- =================================================
+             MENSAJE DE ERROR
+        ================================================== -->
+
+        {% if error %}
+
+        <div class="login-error">
+            {{ error }}
+        </div>
+
+        {% endif %}
+
+
+        <!-- =================================================
+             FORMULARIO
+        ================================================== -->
+
+        <form
+            method="POST"
+            class="login-form"
+        >
+
+            <!-- USUARIO -->
+
+            <div class="form-group">
+
+                <label for="usuario">
+                    Usuario
+                </label>
+
+                <input
+                    type="text"
+                    id="usuario"
+                    name="usuario"
+                    placeholder="Ingresa tu usuario"
+                    autocomplete="username"
+                    required
+                >
+
+            </div>
+
+
+            <!-- CONTRASEÑA -->
+
+            <div class="form-group">
+
+                <label for="password">
+                    Contraseña
+                </label>
+
+                <input
+                    type="password"
+                    id="password"
+                    name="password"
+                    placeholder="Ingresa tu contraseña"
+                    autocomplete="current-password"
+                    required
+                >
+
+            </div>
+
+
+            <!-- BOTÓN -->
+
+            <button
+                type="submit"
+                class="login-button"
+            >
+                Iniciar sesión
+            </button>
+
+        </form>
+
+
+        <!-- =================================================
+             REGISTRO
+        ================================================== -->
+
+        <div class="login-register">
+
+            <p>
+                ¿No tienes una cuenta?
+
+                <a href="{{ url_for('registro') }}">
+                    Registrarme
+                </a>
+            </p>
+
+        </div>
+
+    </div>
+
+</section>
+
+{% endblock %}

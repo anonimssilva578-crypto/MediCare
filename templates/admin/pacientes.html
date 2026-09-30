@@ -1,0 +1,200 @@
+{% extends "admin/admin_base.html" %}
+
+{% block title %}
+Pacientes | MediCare
+{% endblock %}
+
+{% block content %}
+
+<section class="patients-page">
+
+    <!-- =================================================
+         ENCABEZADO
+    ================================================== -->
+
+    <div class="patients-header">
+
+        <div>
+
+            <span class="admin-label">
+                GESTIÓN CLÍNICA
+            </span>
+
+            <h1>
+                Pacientes
+            </h1>
+
+            <p>
+                Consulta y administra los pacientes
+                registrados en MediCare.
+            </p>
+
+        </div>
+
+
+        <a
+            href="{{ url_for('admin_dashboard') }}"
+            class="patients-back"
+        >
+            ← Volver al panel
+        </a>
+
+    </div>
+
+
+    <!-- =================================================
+         BARRA DE INFORMACIÓN
+    ================================================== -->
+
+    <div class="patients-toolbar">
+
+        <div>
+
+            <strong>
+                Pacientes registrados
+            </strong>
+
+            <span>
+                {{ pacientes|length }} pacientes
+            </span>
+
+        </div>
+
+    </div>
+
+
+    <!-- =================================================
+         TABLA
+    ================================================== -->
+
+    <div class="patients-table-container">
+
+        <table class="patients-table">
+
+            <thead>
+
+                <tr>
+
+                    <th>
+                        ID
+                    </th>
+
+                    <th>
+                        Nombre
+                    </th>
+
+                    <th>
+                        Documento
+                    </th>
+
+                    <th>
+                        Fecha de nacimiento
+                    </th>
+
+                    <th>
+                        Sexo
+                    </th>
+
+                    <th>
+                        Teléfono
+                    </th>
+
+                    <th>
+                        Acciones
+                    </th>
+
+                </tr>
+
+            </thead>
+
+
+            <tbody>
+
+                {% for paciente in pacientes %}
+
+                <tr>
+
+                    <td>
+                        {{ paciente.id_paciente }}
+                    </td>
+
+                    <td>
+
+                        <div class="patient-name">
+
+                            <div class="patient-avatar">
+                                {{ paciente.nombre[0]|upper }}
+                            </div>
+
+                            <div>
+
+                                <strong>
+                                    {{ paciente.nombre }}
+                                    {{ paciente.apellido }}
+                                </strong>
+
+                                <span>
+                                    Paciente
+                                </span>
+
+                            </div>
+
+                        </div>
+
+                    </td>
+
+                    <td>
+                        {{ paciente.documento }}
+                    </td>
+
+                    <td>
+                        {{ paciente.fecha_nacimiento }}
+                    </td>
+
+                    <td>
+                        {{ paciente.sexo }}
+                    </td>
+
+                    <td>
+                        {{ paciente.telefono or "No registrado" }}
+                    </td>
+
+                    <td>
+
+                        <a
+                        href="{{ url_for('ver_paciente', id_paciente=paciente.id_paciente) }}"
+                        class="patient-action"
+                        >
+                        Ver
+                    </a>
+
+                    </td>
+
+                </tr>
+
+                {% else %}
+
+                <tr>
+
+                    <td
+                        colspan="7"
+                        class="patients-empty"
+                    >
+
+                        No hay pacientes registrados.
+
+                    </td>
+
+                </tr>
+
+                {% endfor %}
+
+            </tbody>
+
+        </table>
+
+    </div>
+
+</section>
+
+{% endblock %}

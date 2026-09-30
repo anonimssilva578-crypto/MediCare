@@ -1,0 +1,78 @@
+{% extends "paciente/paciente_base.html" %}
+
+{% block title %}
+Órdenes Médicas | MediCare
+{% endblock %}
+
+{% block content %}
+
+<section class="paciente-page">
+
+    <div class="paciente-page-header">
+
+        <span class="paciente-section-label">
+            INFORMACIÓN CLÍNICA
+        </span>
+
+        <h1>Mis órdenes médicas</h1>
+
+        <p>
+            Consulta las órdenes médicas registradas en tu historia clínica.
+        </p>
+
+    </div>
+
+
+    <div class="paciente-detail-card">
+
+        <h2>Órdenes registradas</h2>
+
+        {% if ordenes %}
+
+            {% for orden in ordenes %}
+
+            <div class="paciente-record">
+
+                <div class="paciente-record-header">
+
+                    <strong>
+                        {{ orden.tipo }}
+                    </strong>
+
+                    <span>
+                        {{ orden.fecha }}
+                    </span>
+
+                </div>
+
+                <p>
+                    {{ orden.descripcion }}
+                </p>
+
+                <span class="paciente-status">
+                    {{ orden.estado }}
+                </span>
+
+            </div>
+
+            {% endfor %}
+
+        {% else %}
+
+            <div class="paciente-empty">
+
+                <strong>No tienes órdenes médicas registradas.</strong>
+
+                <p>
+                    Actualmente no hay órdenes disponibles.
+                </p>
+
+            </div>
+
+        {% endif %}
+
+    </div>
+
+</section>
+
+{% endblock %}

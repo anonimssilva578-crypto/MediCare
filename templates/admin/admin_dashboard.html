@@ -1,0 +1,515 @@
+{% extends "admin/admin_base.html" %}
+
+{% block title %}
+Panel del Auxiliar | MediCare
+{% endblock %}
+
+
+{% block content %}
+
+<section class="admin-dashboard">
+
+    <!-- =================================================
+         ENCABEZADO
+    ================================================== -->
+
+    <div class="admin-header">
+
+        <div>
+
+            <span class="admin-label">
+                PANEL DE CONTROL
+            </span>
+
+            <h1>
+                Bienvenido, {{ nombre }}
+            </h1>
+
+            <p>
+                Gestiona la información clínica
+                desde un solo lugar.
+            </p>
+
+        </div>
+
+    </div>
+
+
+    <!-- =================================================
+         ESTADÍSTICAS
+    ================================================== -->
+
+    <div class="admin-stats">
+
+
+        <!-- PACIENTES -->
+
+        <article class="admin-stat-card">
+
+            <div class="admin-stat-icon">
+
+                <svg viewBox="0 0 24 24" fill="none">
+
+                    <circle
+                        cx="9"
+                        cy="8"
+                        r="3"
+                        stroke="currentColor"
+                        stroke-width="2"
+                    />
+
+                    <circle
+                        cx="17"
+                        cy="9"
+                        r="2.5"
+                        stroke="currentColor"
+                        stroke-width="2"
+                    />
+
+                    <path
+                        d="M3.5 20a5.5 5.5 0 0 1 11 0"
+                        stroke="currentColor"
+                        stroke-width="2"
+                        stroke-linecap="round"
+                    />
+
+                    <path
+                        d="M14 16a4.5 4.5 0 0 1 6.5 4"
+                        stroke="currentColor"
+                        stroke-width="2"
+                        stroke-linecap="round"
+                    />
+
+                </svg>
+
+            </div>
+
+            <div>
+
+                <span>
+                    Pacientes
+                </span>
+
+                <strong>
+                    {{ resumen.pacientes }}
+                </strong>
+
+                <small>
+                    Registrados
+                </small>
+
+            </div>
+
+        </article>
+
+
+        <!-- DIAGNÓSTICOS -->
+
+        <article class="admin-stat-card">
+
+            <div class="admin-stat-icon">
+
+                <svg viewBox="0 0 24 24" fill="none">
+
+                    <path
+                        d="M6 3h9l4 4v14H6V3z"
+                        stroke="currentColor"
+                        stroke-width="2"
+                        stroke-linejoin="round"
+                    />
+
+                    <path
+                        d="M15 3v5h4"
+                        stroke="currentColor"
+                        stroke-width="2"
+                        stroke-linejoin="round"
+                    />
+
+                    <path
+                        d="M9 13h6M9 17h4"
+                        stroke="currentColor"
+                        stroke-width="2"
+                        stroke-linecap="round"
+                    />
+
+                </svg>
+
+            </div>
+
+            <div>
+
+                <span>
+                    Diagnósticos
+                </span>
+
+                <strong>
+                    {{ resumen.diagnosticos }}
+                </strong>
+
+                <small>
+                    Registrados
+                </small>
+
+            </div>
+
+        </article>
+
+
+        <!-- ÓRDENES -->
+
+        <article class="admin-stat-card">
+
+            <div class="admin-stat-icon">
+
+                <svg viewBox="0 0 24 24" fill="none">
+
+                    <path
+                        d="M6 3h9l4 4v14H6V3z"
+                        stroke="currentColor"
+                        stroke-width="2"
+                        stroke-linejoin="round"
+                    />
+
+                    <path
+                        d="M15 3v5h4"
+                        stroke="currentColor"
+                        stroke-width="2"
+                        stroke-linejoin="round"
+                    />
+
+                    <path
+                        d="M9 13h6M9 17h6"
+                        stroke="currentColor"
+                        stroke-width="2"
+                        stroke-linecap="round"
+                    />
+
+                </svg>
+
+            </div>
+
+            <div>
+
+                <span>
+                    Órdenes
+                </span>
+
+                <strong>
+                    {{ resumen.ordenes }}
+                </strong>
+
+                <small>
+                    Registradas
+                </small>
+
+            </div>
+
+        </article>
+
+    </div>
+
+
+    <!-- =================================================
+         GESTIÓN RÁPIDA
+    ================================================== -->
+
+    <div class="admin-section-heading">
+
+        <span>
+            GESTIÓN CLÍNICA
+        </span>
+
+        <h2>
+            Accesos rápidos
+        </h2>
+
+        <p>
+            Selecciona una opción para comenzar
+            a gestionar la información.
+        </p>
+
+    </div>
+
+
+    <div class="admin-actions">
+
+
+        <!-- PACIENTES -->
+
+        <a
+            href="{{ url_for('pacientes') }}"
+            class="admin-action-card"
+        >
+
+            <div class="admin-action-icon">
+
+                <svg viewBox="0 0 24 24" fill="none">
+
+                    <circle
+                        cx="9"
+                        cy="8"
+                        r="3"
+                        stroke="currentColor"
+                        stroke-width="2"
+                    />
+
+                    <path
+                        d="M3.5 20a5.5 5.5 0 0 1 11 0"
+                        stroke="currentColor"
+                        stroke-width="2"
+                        stroke-linecap="round"
+                    />
+
+                    <path
+                        d="M17 11v6M14 14h6"
+                        stroke="currentColor"
+                        stroke-width="2"
+                        stroke-linecap="round"
+                    />
+
+                </svg>
+
+            </div>
+
+            <div>
+
+                <h3>
+                    Pacientes
+                </h3>
+
+                <p>
+                    Consultar y gestionar pacientes.
+                </p>
+
+            </div>
+
+            <span class="admin-arrow">
+                →
+            </span>
+
+        </a>
+
+
+        <!-- HISTORIA -->
+
+        <a
+            href="{{ url_for('historia_admin') }}"
+            class="admin-action-card"
+        >
+
+            <div class="admin-action-icon">
+
+                <svg viewBox="0 0 24 24" fill="none">
+
+                    <path
+                        d="M6 3h9l4 4v14H6V3z"
+                        stroke="currentColor"
+                        stroke-width="2"
+                        stroke-linejoin="round"
+                    />
+
+                    <path
+                        d="M15 3v5h4"
+                        stroke="currentColor"
+                        stroke-width="2"
+                        stroke-linejoin="round"
+                    />
+
+                    <path
+                        d="M9 13h6M9 17h4"
+                        stroke="currentColor"
+                        stroke-width="2"
+                        stroke-linecap="round"
+                    />
+
+                </svg>
+
+            </div>
+
+            <div>
+
+                <h3>
+                    Historias clínicas
+                </h3>
+
+                <p>
+                    Consultar información clínica.
+                </p>
+
+            </div>
+
+            <span class="admin-arrow">
+                →
+            </span>
+
+        </a>
+
+
+        <!-- REPORTES -->
+
+        <a
+            href="{{ url_for('reportes') }}"
+            class="admin-action-card"
+        >
+
+            <div class="admin-action-icon">
+
+                <svg viewBox="0 0 24 24" fill="none">
+
+                    <path
+                        d="M4 19V5"
+                        stroke="currentColor"
+                        stroke-width="2"
+                        stroke-linecap="round"
+                    />
+
+                    <path
+                        d="M4 19h16"
+                        stroke="currentColor"
+                        stroke-width="2"
+                        stroke-linecap="round"
+                    />
+
+                    <path
+                        d="M8 16v-4M12 16V8M16 16v-7"
+                        stroke="currentColor"
+                        stroke-width="2"
+                        stroke-linecap="round"
+                    />
+
+                </svg>
+
+            </div>
+
+            <div>
+
+                <h3>
+                    Reportes
+                </h3>
+
+                <p>
+                    Consultar información y reportes.
+                </p>
+
+            </div>
+
+            <span class="admin-arrow">
+                →
+            </span>
+
+        </a>
+
+    </div>
+
+    <!-- =====================================================
+         RESUMEN DEL SISTEMA
+    ====================================================== -->
+
+    <div class="admin-system-section">
+
+        <div class="admin-section-heading">
+
+            <span>
+                ESTADO DEL SISTEMA
+            </span>
+
+            <h2>
+                Resumen del sistema
+            </h2>
+
+            <p>
+                Información general de los registros actuales
+                de MediCare.
+            </p>
+
+        </div>
+
+
+        <div class="admin-system-card">
+
+            <div class="admin-system-status">
+
+                <div class="admin-system-status-icon">
+
+                    <svg viewBox="0 0 24 24" fill="none">
+
+                        <path
+                            d="M5 12.5l4 4L19 6.5"
+                            stroke="currentColor"
+                            stroke-width="2"
+                            stroke-linecap="round"
+                            stroke-linejoin="round"
+                        />
+
+                    </svg>
+
+                </div>
+
+                <div>
+
+                    <strong>
+                        Sistema operativo
+                    </strong>
+
+                    <p>
+                        MediCare está listo para gestionar
+                        la información clínica.
+                    </p>
+
+                </div>
+
+            </div>
+
+
+            <div class="admin-system-divider"></div>
+
+
+            <div class="admin-system-data">
+
+                <div class="admin-system-item">
+
+                    <span>
+                        Pacientes registrados
+                    </span>
+
+                    <strong>
+                        {{ resumen.pacientes }}
+                    </strong>
+
+                </div>
+
+
+                <div class="admin-system-item">
+
+                    <span>
+                        Diagnósticos registrados
+                    </span>
+
+                    <strong>
+                        {{ resumen.diagnosticos }}
+                    </strong>
+
+                </div>
+
+
+                <div class="admin-system-item">
+
+                    <span>
+                        Órdenes registradas
+                    </span>
+
+                    <strong>
+                        {{ resumen.ordenes }}
+                    </strong>
+
+                </div>
+
+            </div>
+
+        </div>
+
+    </div>
+
+</section>
+
+{% endblock %}

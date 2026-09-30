@@ -1,0 +1,141 @@
+<!DOCTYPE html>
+<html lang="es">
+
+<head>
+
+    <meta charset="UTF-8">
+
+    <meta
+        name="viewport"
+        content="width=device-width, initial-scale=1.0"
+    >
+
+    <title>
+        {% block title %}
+        MediCare
+        {% endblock %}
+    </title>
+
+    <link
+        rel="icon"
+        type="image/png"
+        href="{{ url_for('static', filename='img/favicon.png') }}"
+    >
+
+    <link
+        rel="stylesheet"
+        href="{{ url_for('static', filename='css/admin.css') }}"
+    >
+
+    {% block extra_css %}
+    {% endblock %}
+
+</head>
+
+<body>
+
+<!-- =====================================================
+     NAVBAR ADMINISTRATIVA
+===================================================== -->
+
+<header class="admin-navbar">
+
+    <a
+        href="{{ url_for('admin_dashboard') }}"
+        class="admin-logo"
+    >
+
+        <img
+            src="{{ url_for('static', filename='img/logo.png') }}"
+            alt="Logo de MediCare"
+        >
+
+    </a>
+
+
+    <nav class="admin-nav-links">
+
+        <a href="{{ url_for('admin_dashboard') }}">
+            Panel
+        </a>
+
+        <a href="{{ url_for('pacientes') }}">
+            Pacientes
+        </a>
+
+        <a href="{{ url_for('historia_admin') }}">
+            Historias
+        </a>
+
+        <a href="{{ url_for('reportes') }}">
+            Reportes
+        </a>
+
+    </nav>
+
+
+    <div class="admin-nav-actions">
+
+        <span class="admin-user">
+            {{ nombre }}
+        </span>
+
+        <a
+            href="{{ url_for('logout') }}"
+            class="admin-navbar-logout"
+        >
+            Cerrar sesión
+        </a>
+
+    </div>
+
+</header>
+
+
+<!-- =====================================================
+     CONTENIDO
+===================================================== -->
+
+<main>
+
+    {% block content %}
+    {% endblock %}
+
+</main>
+
+
+<!-- =====================================================
+     FOOTER
+===================================================== -->
+
+<footer class="admin-footer">
+
+    <p>
+        © <span id="current-year">2026</span>
+        MediCare — Sistema de Gestión Clínica
+        <br>
+        Derechos Reservados — Página elaborada por Nexus Corp
+    </p>
+
+</footer>
+
+
+<script>
+
+    const yearElement =
+        document.getElementById("current-year");
+
+    if (yearElement) {
+        yearElement.textContent =
+            new Date().getFullYear();
+    }
+
+</script>
+
+
+{% block extra_js %}
+{% endblock %}
+
+</body>
+
+</html>

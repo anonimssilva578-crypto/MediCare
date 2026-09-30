@@ -1,0 +1,435 @@
+{% extends "base.html" %}
+
+{% block title %}MediCare | Sistema de Gestión Clínica{% endblock %}
+
+{% block content %}
+
+<!-- =====================================================
+     HERO / BANNER PRINCIPAL
+===================================================== -->
+
+<section class="hero" id="inicio">
+
+    <div class="hero-content">
+
+        <span class="hero-tag">
+            SISTEMA DE GESTIÓN CLÍNICA
+        </span>
+
+        <h1>
+            Cuidado y gestión
+            <span>en un solo lugar.</span>
+        </h1>
+
+        <p>
+            MediCare facilita la gestión de información clínica,
+            permitiendo organizar pacientes, historias clínicas,
+            atenciones, diagnósticos y órdenes de manera sencilla.
+        </p>
+
+        <div class="hero-buttons">
+
+            <a href="{{ url_for('login') }}" class="btn-primary">
+                Iniciar sesión
+            </a>
+
+            <a href="{{ url_for('registro') }}" class="btn-secondary">
+                Registrarme
+            </a>
+
+        </div>
+
+    </div>
+
+
+    <!-- =================================================
+         DECORACIÓN DEL HERO
+    ================================================= -->
+
+    <div class="hero-visual">
+
+    <div class="medical-card main-card">
+
+        <div class="medical-icon">
+            <!-- Estetoscopio -->
+            <svg viewBox="0 0 24 24" fill="none">
+                <path
+                    d="M6 3v5a6 6 0 0 0 12 0V3"
+                    stroke="currentColor"
+                    stroke-width="2"
+                    stroke-linecap="round"
+                />
+                <path
+                    d="M4 3h4M16 3h4"
+                    stroke="currentColor"
+                    stroke-width="2"
+                    stroke-linecap="round"
+                />
+                <path
+                    d="M18 14a3 3 0 1 0 3 3"
+                    stroke="currentColor"
+                    stroke-width="2"
+                    stroke-linecap="round"
+                />
+                <circle
+                    cx="21"
+                    cy="17"
+                    r="1"
+                    fill="currentColor"
+                />
+            </svg>
+        </div>
+
+        <div>
+            <span>Atención clínica</span>
+            <strong>Organizada</strong>
+        </div>
+
+    </div>
+
+
+    <div class="medical-card small-card card-one">
+
+        <div class="mini-icon">
+            <!-- Pacientes -->
+            <svg viewBox="0 0 24 24" fill="none">
+                <circle
+                    cx="9"
+                    cy="8"
+                    r="3"
+                    stroke="currentColor"
+                    stroke-width="2"
+                />
+                <circle
+                    cx="17"
+                    cy="9"
+                    r="2.5"
+                    stroke="currentColor"
+                    stroke-width="2"
+                />
+                <path
+                    d="M3.5 20a5.5 5.5 0 0 1 11 0"
+                    stroke="currentColor"
+                    stroke-width="2"
+                    stroke-linecap="round"
+                />
+                <path
+                    d="M14 16a4.5 4.5 0 0 1 6.5 4"
+                    stroke="currentColor"
+                    stroke-width="2"
+                    stroke-linecap="round"
+                />
+            </svg>
+        </div>
+
+        <div>
+            <span>Pacientes</span>
+            <strong>Registrados</strong>
+        </div>
+
+    </div>
+
+
+    <div class="medical-card small-card card-two">
+
+        <div class="mini-icon">
+            <!-- Historia clínica -->
+            <svg viewBox="0 0 24 24" fill="none">
+                <path
+                    d="M6 3h9l4 4v14H6V3z"
+                    stroke="currentColor"
+                    stroke-width="2"
+                    stroke-linejoin="round"
+                />
+                <path
+                    d="M15 3v5h4"
+                    stroke="currentColor"
+                    stroke-width="2"
+                    stroke-linejoin="round"
+                />
+                <path
+                    d="M9 13h6M9 17h4"
+                    stroke="currentColor"
+                    stroke-width="2"
+                    stroke-linecap="round"
+                />
+            </svg>
+        </div>
+
+        <div>
+            <span>Información</span>
+            <strong>Clínica</strong>
+        </div>
+
+    </div>
+
+
+    <div class="medical-circle circle-one"></div>
+
+    <div class="medical-circle circle-two"></div>
+
+</div>
+
+</section>
+
+
+<!-- =====================================================
+     SERVICIOS
+===================================================== -->
+
+<section class="services" id="servicios">
+
+    <div class="section-heading">
+
+        <span>
+            MEDICARE
+        </span>
+
+        <h2>
+            Todo lo necesario para una gestión clínica organizada
+        </h2>
+
+        <p>
+            Herramientas pensadas para facilitar el manejo
+            de la información clínica.
+        </p>
+
+    </div>
+
+
+    <div class="service-grid">
+
+
+        <!-- SERVICIO 1 -->
+
+        <article class="service-card">
+
+            <div class="service-icon">
+                P
+            </div>
+
+            <h3>
+                Gestión de pacientes
+            </h3>
+
+            <p>
+                Registra y consulta la información básica
+                de los pacientes de forma organizada.
+            </p>
+
+        </article>
+
+
+        <!-- SERVICIO 2 -->
+
+        <article class="service-card">
+
+            <div class="service-icon">
+                H
+            </div>
+
+            <h3>
+                Historias clínicas
+            </h3>
+
+            <p>
+                Consulta el historial de atenciones y
+                la información clínica registrada.
+            </p>
+
+        </article>
+
+
+        <!-- SERVICIO 3 -->
+
+        <article class="service-card">
+
+            <div class="service-icon">
+                O
+            </div>
+
+            <h3>
+                Órdenes y diagnósticos
+            </h3>
+
+            <p>
+                Mantén organizadas las órdenes,
+                diagnósticos y seguimientos de cada paciente.
+            </p>
+
+        </article>
+
+    </div>
+
+</section>
+
+
+<!-- =====================================================
+     INTRODUCCIÓN A NOSOTROS
+===================================================== -->
+
+<section class="final-cta" id="nosotros">
+
+    <div>
+
+        <span>
+            MEDICARE
+        </span>
+
+        <h2>
+            La información clínica,
+            organizada en un solo lugar.
+        </h2>
+
+        <p>
+            Conoce nuestra propuesta, nuestros objetivos
+            y el propósito detrás de MediCare.
+        </p>
+
+    </div>
+
+    <a
+        href="{{ url_for('nosotros') }}"
+        class="cta-button"
+    >
+        Conócenos más →
+    </a>
+
+</section>
+
+
+<!-- =====================================================
+     ACCESOS
+===================================================== -->
+
+<section class="access" id="acceso">
+
+    <div class="section-heading">
+
+        <span>
+            ACCESO AL SISTEMA
+        </span>
+
+        <h2>
+            Una plataforma, dos espacios de trabajo.
+        </h2>
+
+        <p>
+            Cada usuario dispone de herramientas de acuerdo
+            con su función dentro de MediCare.
+        </p>
+
+    </div>
+
+
+    <div class="access-grid">
+
+
+        <!-- AUXILIAR -->
+
+        <article class="access-card">
+
+            <div class="access-icon">
+                A
+            </div>
+
+            <div class="access-content">
+
+                <span>
+                    PERSONAL CLÍNICO
+                </span>
+
+                <h3>
+                    Auxiliar de Enfermería
+                </h3>
+
+                <p>
+                    Gestiona pacientes, historias clínicas,
+                    atenciones, diagnósticos, órdenes y reportes.
+                </p>
+
+                <a
+                    href="{{ url_for('login') }}"
+                    class="access-button"
+                >
+                    Acceder al sistema →
+                </a>
+
+            </div>
+
+        </article>
+
+
+        <!-- PACIENTE -->
+
+        <article class="access-card patient-card">
+
+            <div class="access-icon">
+                P
+            </div>
+
+            <div class="access-content">
+
+                <span>
+                    USUARIO
+                </span>
+
+                <h3>
+                    Paciente
+                </h3>
+
+                <p>
+                    Consulta tu información, historia clínica,
+                    diagnósticos, órdenes y atenciones registradas.
+                </p>
+
+                <a
+                    href="{{ url_for('login') }}"
+                    class="access-button"
+                >
+                    Ingresar como paciente →
+                </a>
+
+            </div>
+
+        </article>
+
+    </div>
+
+</section>
+
+
+<!-- =====================================================
+     CTA FINAL
+===================================================== -->
+
+<section class="final-cta">
+
+    <div>
+
+        <span>
+            MEDICARE
+        </span>
+
+        <h2>
+            Comienza a gestionar tu información
+            de manera sencilla.
+        </h2>
+
+        <p>
+            Accede a MediCare y utiliza las herramientas
+            disponibles según tu tipo de usuario.
+        </p>
+
+    </div>
+
+    <a
+        href="{{ url_for('login') }}"
+        class="cta-button"
+    >
+        Iniciar sesión →
+    </a>
+
+</section>
+
+{% endblock %}

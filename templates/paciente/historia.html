@@ -1,0 +1,191 @@
+{% extends "paciente/paciente_base.html" %}
+
+{% block title %}
+Historia Clínica | MediCare
+{% endblock %}
+
+{% block content %}
+
+<section class="paciente-page">
+
+    <div class="paciente-page-header">
+        <span class="paciente-section-label">
+            INFORMACIÓN CLÍNICA
+        </span>
+
+        <h1>Historia clínica</h1>
+
+        <p>
+            Consulta tu información médica registrada en MediCare.
+        </p>
+    </div>
+
+
+    <!-- INFORMACIÓN PERSONAL -->
+
+    <div class="paciente-detail-card">
+
+        <h2>Información personal</h2>
+
+        <div class="paciente-detail-grid">
+
+            <div>
+                <span>Nombre completo</span>
+                <strong>
+                    {{ paciente.nombre }} {{ paciente.apellido }}
+                </strong>
+            </div>
+
+            <div>
+                <span>Documento</span>
+                <strong>{{ paciente.documento }}</strong>
+            </div>
+
+            <div>
+                <span>Fecha de nacimiento</span>
+                <strong>{{ paciente.fecha_nacimiento }}</strong>
+            </div>
+
+            <div>
+                <span>Sexo</span>
+                <strong>{{ paciente.sexo }}</strong>
+            </div>
+
+            <div>
+                <span>Teléfono</span>
+                <strong>{{ paciente.telefono }}</strong>
+            </div>
+
+            <div>
+                <span>Dirección</span>
+                <strong>{{ paciente.direccion }}</strong>
+            </div>
+
+        </div>
+
+    </div>
+
+
+    <!-- ALERGIAS Y ANTECEDENTES -->
+
+    <div class="paciente-detail-card">
+
+        <h2>Información médica</h2>
+
+        <div class="paciente-medical-grid">
+
+            <div>
+                <span>Alergias</span>
+
+                <p>
+                    {{ paciente.alergias or 'No registradas' }}
+                </p>
+            </div>
+
+            <div>
+                <span>Antecedentes</span>
+
+                <p>
+                    {{ paciente.antecedentes or 'No registrados' }}
+                </p>
+            </div>
+
+        </div>
+
+    </div>
+
+
+    <!-- DIAGNÓSTICOS -->
+
+    <div class="paciente-detail-card">
+
+        <h2>Diagnósticos</h2>
+
+        {% if diagnosticos %}
+
+            {% for diagnostico in diagnosticos %}
+
+            <div class="paciente-record">
+
+                <div class="paciente-record-header">
+
+                    <strong>
+                        {{ diagnostico.diagnostico }}
+                    </strong>
+
+                    <span>
+                        {{ diagnostico.fecha }}
+                    </span>
+
+                </div>
+
+                {% if diagnostico.observaciones %}
+                    <p>
+                        {{ diagnostico.observaciones }}
+                    </p>
+                {% endif %}
+
+            </div>
+
+            {% endfor %}
+
+        {% else %}
+
+            <div class="paciente-empty">
+                No hay diagnósticos registrados.
+            </div>
+
+        {% endif %}
+
+    </div>
+
+
+    <!-- ÓRDENES -->
+
+    <div class="paciente-detail-card">
+
+        <h2>Órdenes médicas</h2>
+
+        {% if ordenes %}
+
+            {% for orden in ordenes %}
+
+            <div class="paciente-record">
+
+                <div class="paciente-record-header">
+
+                    <strong>
+                        {{ orden.tipo }}
+                    </strong>
+
+                    <span>
+                        {{ orden.fecha }}
+                    </span>
+
+                </div>
+
+                <p>
+                    {{ orden.descripcion }}
+                </p>
+
+                <span class="paciente-status">
+                    {{ orden.estado }}
+                </span>
+
+            </div>
+
+            {% endfor %}
+
+        {% else %}
+
+            <div class="paciente-empty">
+                No hay órdenes médicas registradas.
+            </div>
+
+        {% endif %}
+
+    </div>
+
+</section>
+
+{% endblock %}
