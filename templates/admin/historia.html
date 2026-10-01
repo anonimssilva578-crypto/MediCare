@@ -159,10 +159,7 @@ Historias clínicas | MediCare
                     <td>
 
                         <a
-                            href="{{ url_for(
-                                'ver_paciente',
-                                id_paciente=paciente.id_paciente
-                            ) }}"
+                            href="{{ url_for('paciente_detalle', id_paciente=paciente.id_paciente) }}"
                             class="patient-action"
                         >
                             Ver historia
