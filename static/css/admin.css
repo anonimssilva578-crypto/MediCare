@@ -2573,3 +2573,210 @@ body {
     }
 
 }
+
+/* =========================================================
+   REPORTE DE HISTORIA CLÍNICA
+========================================================= */
+
+.admin-history-report {
+    width: 100%;
+    background: #ffffff;
+    border: 1px solid #dfeaf0;
+    border-radius: 16px;
+    padding: 35px;
+    box-shadow: 0 10px 30px rgba(20, 70, 100, 0.06);
+}
+
+
+/* ENCABEZADO */
+
+.admin-history-header {
+    display: flex;
+    align-items: flex-start;
+    justify-content: space-between;
+    gap: 30px;
+    padding-bottom: 28px;
+    border-bottom: 1px solid #e5edf2;
+}
+
+.admin-history-header h2 {
+    margin-top: 7px;
+    color: #173042;
+    font-size: 28px;
+}
+
+.admin-history-header p {
+    margin-top: 6px;
+    color: #718394;
+    font-size: 14px;
+}
+
+
+/* SECCIONES */
+
+.admin-history-section {
+    margin-top: 32px;
+}
+
+.admin-history-section-title {
+    margin-bottom: 18px;
+}
+
+.admin-history-section-title span {
+    display: block;
+    margin-bottom: 5px;
+    color: #0088cc;
+    font-size: 10px;
+    font-weight: 700;
+    letter-spacing: 1.4px;
+}
+
+.admin-history-section-title h3 {
+    color: #173042;
+    font-size: 19px;
+}
+
+
+/* INFORMACIÓN PERSONAL */
+
+.admin-history-grid {
+    display: grid;
+    grid-template-columns: repeat(2, 1fr);
+    gap: 14px;
+}
+
+.admin-history-grid > div {
+    padding: 16px;
+    background: #f8fbfd;
+    border: 1px solid #e3edf2;
+    border-radius: 10px;
+}
+
+.admin-history-grid strong,
+.admin-history-clinical strong,
+.admin-history-record strong {
+    display: block;
+    margin-bottom: 5px;
+    color: #526575;
+    font-size: 11px;
+    font-weight: 700;
+}
+
+.admin-history-grid p,
+.admin-history-clinical p,
+.admin-history-record p {
+    color: #173042;
+    font-size: 13px;
+    line-height: 1.6;
+}
+
+
+/* INFORMACIÓN CLÍNICA */
+
+.admin-history-clinical {
+    display: grid;
+    grid-template-columns: repeat(2, 1fr);
+    gap: 16px;
+}
+
+.admin-history-clinical > div {
+    padding: 20px;
+    background: #f8fbfd;
+    border: 1px solid #e3edf2;
+    border-radius: 11px;
+}
+
+
+/* DIAGNÓSTICOS Y ÓRDENES */
+
+.admin-history-records {
+    display: flex;
+    flex-direction: column;
+    gap: 14px;
+}
+
+.admin-history-record {
+    display: grid;
+    grid-template-columns: 1.5fr 1fr 1fr;
+    gap: 18px;
+    padding: 20px;
+    background: #f8fbfd;
+    border: 1px solid #e3edf2;
+    border-radius: 11px;
+}
+
+.admin-history-full {
+    grid-column: 1 / -1;
+}
+
+
+/* SIN REGISTROS */
+
+.admin-history-empty {
+    padding: 25px;
+    text-align: center;
+    color: #718394;
+    background: #f8fbfd;
+    border: 1px dashed #cbdde7;
+    border-radius: 11px;
+}
+
+
+/* RESPONSIVE */
+
+@media (max-width: 768px) {
+
+    .admin-history-report {
+        padding: 22px;
+    }
+
+    .admin-history-header {
+        flex-direction: column;
+    }
+
+    .admin-history-grid,
+    .admin-history-clinical {
+        grid-template-columns: 1fr;
+    }
+
+    .admin-history-record {
+        grid-template-columns: 1fr;
+    }
+
+    .admin-history-full {
+        grid-column: auto;
+    }
+
+}
+
+
+/* IMPRESIÓN */
+
+@media print {
+
+    body {
+        background: #ffffff !important;
+    }
+
+    .admin-navbar,
+    .admin-footer,
+    .admin-sidebar,
+    .admin-report-export {
+        display: none !important;
+    }
+
+    .admin-main {
+        padding: 0 !important;
+    }
+
+    .admin-history-report {
+        border: none;
+        box-shadow: none;
+        padding: 0;
+    }
+
+    .admin-history-section {
+        break-inside: avoid;
+    }
+
+}

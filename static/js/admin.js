@@ -525,593 +525,267 @@ async function consultarHistoria() {
 
 function mostrarHistoria(datos) {
 
-    const paciente =
-        datos.paciente || {};
-
-
-    const diagnosticos =
-        datos.diagnosticos || [];
-
-
-    const ordenes =
-        datos.ordenes || [];
-
+    const paciente = datos.paciente;
+    const diagnosticos = datos.diagnosticos || [];
+    const ordenes = datos.ordenes || [];
 
     let contenido = `
 
-        <div class="admin-report-result-header">
+        <div class="admin-history-report">
 
-            <div>
-
-                <span>
-                    HISTORIA CLÍNICA
-                </span>
-
-                <h2>
-
-                    ${escaparHTML(
-                        paciente.nombre
-                    )}
-
-                    ${escaparHTML(
-                        paciente.apellido
-                    )}
-
-                </h2>
-
-
-                <p>
-
-                    Documento:
-
-                    ${escaparHTML(
-                        paciente.documento
-                    )}
-
-                </p>
-
-            </div>
-
-
-            <button
-                type="button"
-                class="admin-report-export"
-                onclick="imprimirReporte()"
-            >
-
-                🖨️ Imprimir
-
-            </button>
-
-        </div>
-
-
-        <!-- ===============================================
-             INFORMACIÓN PERSONAL
-        ================================================ -->
-
-        <div class="admin-report-section">
-
-            <h3>
-                Información personal
-            </h3>
-
-
-            <div class="admin-report-info-grid">
-
+            <div class="admin-history-header">
 
                 <div>
-
-                    <strong>
-                        Nombre completo
-                    </strong>
-
-                    <span>
-
-                        ${escaparHTML(
-                            paciente.nombre
-                        )}
-
-                        ${escaparHTML(
-                            paciente.apellido
-                        )}
-
+                    <span class="admin-label">
+                        HISTORIA CLÍNICA
                     </span>
 
-                </div>
-
-
-                <div>
-
-                    <strong>
-                        Documento
-                    </strong>
-
-                    <span>
-
-                        ${escaparHTML(
-                            paciente.documento
-                        )}
-
-                    </span>
-
-                </div>
-
-
-                <div>
-
-                    <strong>
-                        Fecha de nacimiento
-                    </strong>
-
-                    <span>
-
-                        ${escaparHTML(
-                            paciente.fecha_nacimiento
-                        ) || "No registrada"}
-
-                    </span>
-
-                </div>
-
-
-                <div>
-
-                    <strong>
-                        Sexo
-                    </strong>
-
-                    <span>
-
-                        ${escaparHTML(
-                            paciente.sexo
-                        ) || "No registrado"}
-
-                    </span>
-
-                </div>
-
-
-                <div>
-
-                    <strong>
-                        Teléfono
-                    </strong>
-
-                    <span>
-
-                        ${escaparHTML(
-                            paciente.telefono
-                        ) || "No registrado"}
-
-                    </span>
-
-                </div>
-
-
-                <div>
-
-                    <strong>
-                        Dirección
-                    </strong>
-
-                    <span>
-
-                        ${escaparHTML(
-                            paciente.direccion
-                        ) || "No registrada"}
-
-                    </span>
-
-                </div>
-
-
-                <div>
-
-                    <strong>
-                        Contacto de emergencia
-                    </strong>
-
-                    <span>
-
-                        ${escaparHTML(
-                            paciente.contacto_emergencia
-                        ) || "No registrado"}
-
-                    </span>
-
-                </div>
-
-
-                <div>
-
-                    <strong>
-                        Teléfono de emergencia
-                    </strong>
-
-                    <span>
-
-                        ${escaparHTML(
-                            paciente.telefono_emergencia
-                        ) || "No registrado"}
-
-                    </span>
-
-                </div>
-
-
-            </div>
-
-        </div>
-
-
-        <!-- ===============================================
-             INFORMACIÓN CLÍNICA
-        ================================================ -->
-
-        <div class="admin-report-section">
-
-            <h3>
-                Información clínica
-            </h3>
-
-
-            <div class="admin-report-clinical-grid">
-
-
-                <div>
-
-                    <strong>
-                        Alergias
-                    </strong>
+                    <h2>
+                        ${escaparHTML(paciente.nombre)}
+                        ${escaparHTML(paciente.apellido)}
+                    </h2>
 
                     <p>
-
-                        ${escaparHTML(
-                            paciente.alergias
-                        ) || "No registradas"}
-
+                        Documento:
+                        ${escaparHTML(paciente.documento)}
                     </p>
+                </div>
+
+                <button
+                    type="button"
+                    class="admin-report-export"
+                    onclick="imprimirReporte()"
+                >
+                    🖨️ Imprimir
+                </button>
+
+            </div>
+
+
+            <!-- INFORMACIÓN PERSONAL -->
+
+            <div class="admin-history-section">
+
+                <div class="admin-history-section-title">
+                    <span>INFORMACIÓN PERSONAL</span>
+                    <h3>Datos del paciente</h3>
+                </div>
+
+                <div class="admin-history-grid">
+
+                    <div>
+                        <strong>Nombre completo</strong>
+                        <p>
+                            ${escaparHTML(paciente.nombre)}
+                            ${escaparHTML(paciente.apellido)}
+                        </p>
+                    </div>
+
+                    <div>
+                        <strong>Documento</strong>
+                        <p>
+                            ${escaparHTML(paciente.documento)}
+                        </p>
+                    </div>
+
+                    <div>
+                        <strong>Fecha de nacimiento</strong>
+                        <p>
+                            ${escaparHTML(paciente.fecha_nacimiento) || "No registrada"}
+                        </p>
+                    </div>
+
+                    <div>
+                        <strong>Sexo</strong>
+                        <p>
+                            ${escaparHTML(paciente.sexo) || "No registrado"}
+                        </p>
+                    </div>
+
+                    <div>
+                        <strong>Teléfono</strong>
+                        <p>
+                            ${escaparHTML(paciente.telefono) || "No registrado"}
+                        </p>
+                    </div>
+
+                    <div>
+                        <strong>Dirección</strong>
+                        <p>
+                            ${escaparHTML(paciente.direccion) || "No registrada"}
+                        </p>
+                    </div>
+
+                    <div>
+                        <strong>Contacto de emergencia</strong>
+                        <p>
+                            ${escaparHTML(paciente.contacto_emergencia) || "No registrado"}
+                        </p>
+                    </div>
+
+                    <div>
+                        <strong>Teléfono de emergencia</strong>
+                        <p>
+                            ${escaparHTML(paciente.telefono_emergencia) || "No registrado"}
+                        </p>
+                    </div>
 
                 </div>
 
+            </div>
 
-                <div>
 
-                    <strong>
-                        Antecedentes
-                    </strong>
+            <!-- INFORMACIÓN CLÍNICA -->
 
-                    <p>
+            <div class="admin-history-section">
 
-                        ${escaparHTML(
-                            paciente.antecedentes
-                        ) || "No registrados"}
+                <div class="admin-history-section-title">
+                    <span>INFORMACIÓN CLÍNICA</span>
+                    <h3>Antecedentes y alergias</h3>
+                </div>
 
-                    </p>
+                <div class="admin-history-clinical">
+
+                    <div>
+                        <strong>Alergias</strong>
+                        <p>
+                            ${escaparHTML(paciente.alergias) || "No registradas"}
+                        </p>
+                    </div>
+
+                    <div>
+                        <strong>Antecedentes</strong>
+                        <p>
+                            ${escaparHTML(paciente.antecedentes) || "No registrados"}
+                        </p>
+                    </div>
 
                 </div>
 
-
             </div>
 
-        </div>
 
+            <!-- DIAGNÓSTICOS -->
 
-        <!-- ===============================================
-             DIAGNÓSTICOS
-        ================================================ -->
+            <div class="admin-history-section">
 
-        <div class="admin-report-section">
+                <div class="admin-history-section-title">
+                    <span>REGISTRO CLÍNICO</span>
+                    <h3>Diagnósticos</h3>
+                </div>
 
-            <h3>
-                Diagnósticos
-            </h3>
+                ${
+                    diagnosticos.length === 0
+                    ? `
+                        <div class="admin-history-empty">
+                            No hay diagnósticos registrados.
+                        </div>
+                    `
+                    : `
+                        <div class="admin-history-records">
 
-    `;
+                            ${diagnosticos.map(d => `
 
+                                <div class="admin-history-record">
 
-    // -----------------------------------------------------
-    // DIAGNÓSTICOS VACÍOS
-    // -----------------------------------------------------
+                                    <div>
+                                        <strong>Diagnóstico</strong>
+                                        <p>
+                                            ${escaparHTML(d.diagnostico)}
+                                        </p>
+                                    </div>
 
-    if (diagnosticos.length === 0) {
+                                    <div>
+                                        <strong>Fecha</strong>
+                                        <p>
+                                            ${escaparHTML(d.fecha)}
+                                        </p>
+                                    </div>
 
-        contenido += `
+                                    <div class="admin-history-full">
+                                        <strong>Observaciones</strong>
+                                        <p>
+                                            ${escaparHTML(d.observaciones) || "Sin observaciones"}
+                                        </p>
+                                    </div>
 
-            <div class="admin-report-empty small">
+                                </div>
 
-                <p>
-                    No existen diagnósticos registrados.
-                </p>
-
-            </div>
-
-        `;
-
-    }
-
-
-    // -----------------------------------------------------
-    // DIAGNÓSTICOS
-    // -----------------------------------------------------
-
-    else {
-
-        contenido += `
-
-            <div class="admin-report-records">
-
-        `;
-
-
-        diagnosticos.forEach(
-            function (diagnostico) {
-
-                contenido += `
-
-                    <div
-                        class="admin-report-record"
-                    >
-
-                        <div>
-
-                            <strong>
-                                Diagnóstico
-                            </strong>
-
-                            <span>
-
-                                ${escaparHTML(
-                                    diagnostico.diagnostico
-                                )}
-
-                            </span>
+                            `).join("")}
 
                         </div>
-
-
-                        <div>
-
-                            <strong>
-                                Fecha
-                            </strong>
-
-                            <span>
-
-                                ${escaparHTML(
-                                    diagnostico.fecha
-                                )}
-
-                            </span>
-
-                        </div>
-
-
-                        <div>
-
-                            <strong>
-                                Observaciones
-                            </strong>
-
-                            <span>
-
-                                ${escaparHTML(
-                                    diagnostico.observaciones
-                                ) || "Sin observaciones"}
-
-                            </span>
-
-                        </div>
-
-                    </div>
-
-                `;
-
-            }
-        );
-
-
-        contenido += `
-
-            </div>
-
-        `;
-
-    }
-
-
-    contenido += `
-
-        </div>
-
-
-        <!-- ===============================================
-             ÓRDENES
-        ================================================ -->
-
-        <div class="admin-report-section">
-
-            <h3>
-                Órdenes
-            </h3>
-
-    `;
-
-
-    // -----------------------------------------------------
-    // ÓRDENES VACÍAS
-    // -----------------------------------------------------
-
-    if (ordenes.length === 0) {
-
-        contenido += `
-
-            <div class="admin-report-empty small">
-
-                <p>
-                    No existen órdenes registradas.
-                </p>
-
-            </div>
-
-        `;
-
-    }
-
-
-    // -----------------------------------------------------
-    // ÓRDENES
-    // -----------------------------------------------------
-
-    else {
-
-        contenido += `
-
-            <div class="admin-report-records">
-
-        `;
-
-
-        ordenes.forEach(
-            function (orden) {
-
-                let claseEstado = "other";
-
-
-                if (
-                    orden.estado &&
-                    orden.estado.toLowerCase() ===
-                    "pendiente"
-                ) {
-
-                    claseEstado = "pending";
-
+                    `
                 }
 
-
-                if (
-                    orden.estado &&
-                    (
-                        orden.estado.toLowerCase() ===
-                        "completada" ||
-
-                        orden.estado.toLowerCase() ===
-                        "completado"
-                    )
-                ) {
-
-                    claseEstado = "completed";
-
-                }
-
-
-                contenido += `
-
-                    <div
-                        class="admin-report-record"
-                    >
-
-
-                        <div>
-
-                            <strong>
-                                Tipo
-                            </strong>
-
-                            <span>
-
-                                ${escaparHTML(
-                                    orden.tipo
-                                )}
-
-                            </span>
-
-                        </div>
-
-
-                        <div>
-
-                            <strong>
-                                Descripción
-                            </strong>
-
-                            <span>
-
-                                ${escaparHTML(
-                                    orden.descripcion
-                                )}
-
-                            </span>
-
-                        </div>
-
-
-                        <div>
-
-                            <strong>
-                                Fecha
-                            </strong>
-
-                            <span>
-
-                                ${escaparHTML(
-                                    orden.fecha
-                                )}
-
-                            </span>
-
-                        </div>
-
-
-                        <div>
-
-                            <strong>
-                                Estado
-                            </strong>
-
-                            <span
-                                class="
-                                    clinical-order-status
-                                    ${claseEstado}
-                                "
-                            >
-
-                                ${escaparHTML(
-                                    orden.estado
-                                )}
-
-                            </span>
-
-                        </div>
-
-
-                    </div>
-
-                `;
-
-            }
-        );
-
-
-        contenido += `
-
             </div>
 
-        `;
 
-    }
+            <!-- ÓRDENES -->
 
+            <div class="admin-history-section">
 
-    contenido += `
+                <div class="admin-history-section-title">
+                    <span>REGISTRO CLÍNICO</span>
+                    <h3>Órdenes</h3>
+                </div>
+
+                ${
+                    ordenes.length === 0
+                    ? `
+                        <div class="admin-history-empty">
+                            No hay órdenes registradas.
+                        </div>
+                    `
+                    : `
+                        <div class="admin-history-records">
+
+                            ${ordenes.map(o => `
+
+                                <div class="admin-history-record">
+
+                                    <div>
+                                        <strong>Tipo</strong>
+                                        <p>
+                                            ${escaparHTML(o.tipo)}
+                                        </p>
+                                    </div>
+
+                                    <div>
+                                        <strong>Estado</strong>
+                                        <p>
+                                            ${escaparHTML(o.estado)}
+                                        </p>
+                                    </div>
+
+                                    <div>
+                                        <strong>Fecha</strong>
+                                        <p>
+                                            ${escaparHTML(o.fecha)}
+                                        </p>
+                                    </div>
+
+                                    <div class="admin-history-full">
+                                        <strong>Descripción</strong>
+                                        <p>
+                                            ${escaparHTML(o.descripcion)}
+                                        </p>
+                                    </div>
+
+                                </div>
+
+                            `).join("")}
+
+                        </div>
+                    `
+                }
+
+            </div>
 
         </div>
 
     `;
-
 
     mostrarResultado(contenido);
-
 }
 
 
