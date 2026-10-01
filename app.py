@@ -24,6 +24,15 @@ from database.consultas import (
 
 app = Flask(__name__)
 
+@app.after_request
+def evitar_cache(respuesta):
+
+    respuesta.headers["Cache-Control"] = "no-cache, no-store, must-revalidate"
+    respuesta.headers["Pragma"] = "no-cache"
+    respuesta.headers["Expires"] = "0"
+
+    return respuesta
+
 app.secret_key = "medicare_clave_secreta_2026"
 
 
@@ -1129,7 +1138,6 @@ def ordenes_paciente():
         if conexion:
             conexion.close()
 
-
 # =========================================================
 # CERRAR SESIÓN
 # =========================================================
@@ -1139,14 +1147,13 @@ def logout():
 
     session.clear()
 
-    flash(
-        "Has cerrado sesión correctamente.",
-        "success"
-    )
+    respuesta = redirect(url_for("login"))
 
-    return redirect(
-        url_for("login")
-    )
+    respuesta.headers["Cache-Control"] = "no-cache, no-store, must-revalidate"
+    respuesta.headers["Pragma"] = "no-cache"
+    respuesta.headers["Expires"] = "0"
+
+    return respuesta
 
 
 # =========================================================
